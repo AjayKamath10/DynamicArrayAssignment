@@ -23,8 +23,10 @@ namespace DynamicArrayAssignment
         {
             if (index >= capacity)
             {
-                // Resize the array if the index is beyond the current capacity
-                int newCapacity = capacity * 2;
+                int newCapacity;
+                if (index >= capacity * 2) newCapacity = index + 1;
+                else newCapacity = capacity * 2;
+                
                 T[] newArray = new T[newCapacity];
                 Array.Copy(array, newArray, capacity);
                 array = newArray;
