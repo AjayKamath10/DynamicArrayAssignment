@@ -9,21 +9,21 @@ namespace DynamicArrayAssignment
     public class DynamicArray<T>
     {
         private T[] array;
-        private int size;
-        private int capacity;
+        private uint size;
+        private uint capacity;
 
-        public DynamicArray(int capacity)
+        public DynamicArray(uint capacity)
         {
             this.capacity = capacity;
             this.array = new T[capacity];
             this.size = 0;
         }
 
-        public void Add(int index, T item)
+        public void Add(uint index, T item)
         {
             if (index >= capacity)
             {
-                int newCapacity;
+                uint newCapacity;
                 if (index >= capacity * 2) newCapacity = index + 1;
                 else newCapacity = capacity * 2;
                 
@@ -37,11 +37,11 @@ namespace DynamicArrayAssignment
             size++;
         }
 
-        public T this[int index]
+        public T this[uint index]
         {
             get
             {
-                if (index < 0 || index >= size)
+                if (index >= size)
                 {
                     throw new IndexOutOfRangeException("Index is out of range.");
                 }
@@ -50,12 +50,10 @@ namespace DynamicArrayAssignment
             }
         }
 
-        public int Count
+        public uint Count
         {
             get { return size; }
         }
 
     }
-
-
 }
